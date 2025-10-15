@@ -16,3 +16,10 @@ class SignUpSchema(BaseModel):
     first_name: str
     last_name: str
     email: str
+
+
+class SignInSchema(BaseModel):
+    """Schema for user sign-in."""
+
+    username: str
+    password: str

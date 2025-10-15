@@ -3,12 +3,12 @@ from datetime import UTC, datetime, timedelta
 import bcrypt
 import jwt
 from pymongo.errors import DuplicateKeyError
-from scraper.src.scraper.utils.utils import get_config
 
 from viewer.auth.schemas import SignUpSchema
 from viewer.public.database import get_collection
 from viewer.public.dependencies import get_user
 from viewer.public.models import User
+from viewer.public.utils import get_config
 
 
 class Auth:

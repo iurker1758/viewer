@@ -1,8 +1,8 @@
 from pymongo import MongoClient
 from pymongo.collection import Collection
-from scraper.src.scraper.utils.utils import get_config
 
 from viewer.public.types import Database
+from viewer.public.utils import get_config
 
 
 def get_collection(coll: Database) -> Collection:
