@@ -1,24 +1,21 @@
-from pydantic import BaseModel
+from viewer.public.schemas import BaseSchema
 
 
-class Token(BaseModel):
+class Token(BaseSchema):
     """Schema for access token response."""
 
     access_token: str
     token_type: str
 
 
-class SignUpSchema(BaseModel):
+class SignUpSchema(BaseSchema):
     """Schema for user sign-up."""
 
     username: str
     password: str
-    first_name: str
-    last_name: str
-    email: str
 
 
-class SignInSchema(BaseModel):
+class SignInSchema(BaseSchema):
     """Schema for user sign-in."""
 
     username: str

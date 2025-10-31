@@ -10,9 +10,6 @@ class User(BaseModel):
 
     username: str
     hashed_password: bytes
-    first_name: str
-    last_name: str
-    email: str
     add_date: datetime
     role: str
 
@@ -24,8 +21,5 @@ class User(BaseModel):
         """
         return UserSchema(
             username=self.username,
-            first_name=self.first_name,
-            last_name=self.last_name,
-            email=self.email,
             role=self.role,
         )

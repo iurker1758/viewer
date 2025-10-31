@@ -1,3 +1,4 @@
+import re
 import shutil
 from configparser import ConfigParser
 from pathlib import Path
@@ -43,3 +44,32 @@ def get_temp_directory(
         shutil.rmtree(temp_file_location, ignore_errors=True)
     temp_file_location.mkdir(parents=True, exist_ok=True)
     return temp_file_location
+
+
+def to_camel(snake: str) -> str:
+    """Convert snake_case string to camelCase.
+
+    Args:
+        snake (str): The snake_case string.
+
+    Returns:
+        str: The camelCase string.
+    """
+    if re.match("^[a-z]+[A-Za-z0-9]*$", snake) and not re.search(r"\d[a-z]", snake):
+        return snake
+
+    camel = to_pascal(snake)
+    return re.sub("(^_*[A-Z])", lambda x: x.group(1).lower(), camel)
+
+
+def to_pascal(snake: str) -> str:
+    """Convert snake_case string to PascalCase.
+
+    Args:
+        snake (str): The snake_case string.
+
+    Returns:
+        str: The PascalCase string.
+    """
+    camel = snake.title()
+    return re.sub("([0-9A-Za-z])_(?=[0-9A-Z])", lambda m: m.group(1), camel)

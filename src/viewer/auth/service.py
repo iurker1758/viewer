@@ -94,9 +94,6 @@ class Auth:
         new_user = User(
             username=user.username,
             hashed_password=cls.__hash_password(user.password),
-            first_name=user.first_name,
-            last_name=user.last_name,
-            email=user.email,
             add_date=datetime.now(UTC),
             role="user",
         )
