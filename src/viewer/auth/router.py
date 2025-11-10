@@ -86,5 +86,12 @@ async def sign_up(sign_up_data: SignUpSchema) -> Token:
 
 @router.get("/me")
 def get_user(user: Annotated[User, Depends(get_current_user)]) -> UserSchema:
-    """Get the current authenticated user's information."""
+    """Get the current authenticated user's information.
+
+    Args:
+        user (User): The current authenticated user.
+
+    Returns:
+        UserSchema: The schema representation of the user.
+    """
     return user.to_user_schema()
