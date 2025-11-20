@@ -1,7 +1,13 @@
+from multiprocessing import Process
+
 from scraper.anilist.fetcher import AniListFetcher
 from scraper.royalroad.fetcher import RoyalRoadFetcher
 
 from viewer.public.database import get_collection
+
+
+def fetch(page: str) -> None:  # noqa: D103
+    RoyalRoadFetcher(page=page).fetch()
 
 
 class DatabaseService:
@@ -31,4 +37,6 @@ class DatabaseService:
         if self.db == "anilist":
             AniListFetcher(page=page).fetch()
         elif self.db == "royalroad":
-            RoyalRoadFetcher(page=page).fetch()
+            p = Process(target=fetch, args=(page,))
+            p.start()
+            p.join()
